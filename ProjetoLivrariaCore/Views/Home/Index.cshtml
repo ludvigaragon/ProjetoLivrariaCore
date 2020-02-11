@@ -1,0 +1,129 @@
+﻿@model ProjetoLivrariaCore.Models.HomeReturn
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            @if (@Model.livroNovo != null)
+            {
+                <img style="height:200px" src="~/images/CapasLivros/@Model.livroNovo.PathCapaLivro" alt="ASP.NET" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Ultimo Livro Cadastrado:  @Model.livroBarato.DataPublicacao.ToShortDateString()
+                    </p>
+                    <p>
+                        @Model.livroNovo.Nome
+                        <a class="btn btn-default" href="Livros/Details/@Model.livroNovo.LivroId">
+                            Veja mais detalhes sobre:
+                        </a>
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div style="height:200px"></div>
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Ultimo Livro Cadastrado:  Nenhum Livro Cadastrado
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="item">
+            @if (@Model.livroBarato != null)
+            {
+                <img style="height:200px" src="~/images/CapasLivros/@Model.livroBarato.PathCapaLivro" alt="ASP.NET" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Livro Mais Barato: @Model.livroBarato.Preco
+                    </p>
+                    <p>
+                        @Model.livroBarato.Nome
+                        <a class="btn btn-default" href="Livros/Details/@Model.livroBarato.LivroId">
+                            Veja mais detalhes sobre:
+                        </a>
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div style="height:200px"></div>
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Livro Mais Barato:  Nenhum Livro Cadastrado
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="item">
+            @if (Model.livroUltimo != null)
+            {
+                <img style="height:200px" src="~/images/CapasLivros/@Model.livroUltimo.PathCapaLivro" alt="ASP.NET" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Último Livro Publicado: @Model.livroUltimo.Nome
+                    </p>
+                    <p>
+                        <a class="btn btn-default" href="Livros/Details/@Model.livroUltimo.LivroId">
+                            Veja mais detalhes sobre:
+                        </a>
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div style="height:200px"></div>
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Último Livro Publicado:  Nenhum Livro Cadastrado
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Você pode:</h2>
+        <ul>
+            <li>Ver Lista Completa de Livros<a href="Livros">Ver a Lista</a></li>
+            <li>Adicionar Livro ao Catálogo.<a href="Livros/Create">Adicionar</a></li>
+            <li>Editar um Livro Existe<br /><a href="Livros">Acesse a Lista, escolha o livro, edite</a></li>
+            <li>Excluir um Livro Existe<br /><a href="Livros">Acesse a Lista, escolha o livro, exclua</a></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Sobre a aplicação</h2>
+        <ul>
+            <li>Mais detalhes da implementação do projeto em 'Sobre'</li>
+            <li><a href="Home/About">Clique para ler mais...</a></li>
+            <li>
+                <b style="color:red">Em caso de falha na conexão com banco, usar Add-Migration e Update-database no 'Console de Gerenciador de Pacote'</b>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Contato com Desenvolvedor</h2>
+        <ul>
+            <li>Informações de Ludvig Soler Aragón</li>
+            <li><a href="Home/Contact">Clique para ler mais...</a></li>
+        </ul>
+    </div>
+</div>

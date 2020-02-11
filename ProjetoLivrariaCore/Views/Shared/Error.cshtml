@@ -1,0 +1,24 @@
+﻿@model Exception
+@{
+    ViewData["Title"] = "Erro";
+}
+
+<h1 class="text-danger">Erro.</h1>
+<h2 class="text-danger">Não foi encontrado durante a operação.</h2>
+
+<h3>Modo Desenvolvimento</h3>
+<p>
+    Um possível motivo foi devido falha na conexão. Verifique utilizando em "Ferramentas > Gerenciador de Pacotes do NuGet > Console do Gerenciador de Pacotes"
+</p>
+<p>
+    Use: Add-Migration - para preparar a estrutura do banco com base na model.
+</p>
+<p>
+    Use: Update-database - para commitar e criar o banco de dados.
+</p>
+<h3>
+    Erro Emitido pelo Sistema:
+</h3>
+<p>
+    @Model.Message - @Model.StackTrace
+</p>

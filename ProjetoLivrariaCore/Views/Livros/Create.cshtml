@@ -1,0 +1,58 @@
+﻿@model ProjetoLivrariaCore.Models.Livro
+
+@{
+    ViewData["Title"] = "Cadastrar Livro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastrar Novo Livro</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control isbn" onblur="consultaISBN()" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+                <span id="spanISBNExists" class="text-danger oculto"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" class="form-control" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataPublicacao" class="control-label"></label>
+                <input asp-for="DataPublicacao" class="form-control" />
+                <span asp-validation-for="DataPublicacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CapaLivro" class="control-label"></label>
+                <input id="upFile" asp-for="CapaLivro" type="file" data-val="true" data-val-required="A imagem da capa do livro é obrigatória." />
+                <span asp-validation-for="CapaLivro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn-sm btn-warning">Voltar para Consulta</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
